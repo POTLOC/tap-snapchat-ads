@@ -1,3 +1,7 @@
+**FORKED FROM: https://github.com/singer-io/tap-snapchat-ads**
+
+This fork fixes some bugs and optimizes the tap for Potloc's scale
+
 # tap-snapchat-ads
 
 This is a [Singer](https://singer.io) tap that produces JSON-formatted data
