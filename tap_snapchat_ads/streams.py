@@ -97,6 +97,7 @@ STREAMS = {
                         'key_properties': ['id', 'start_time'],
                         'replication_method': 'INCREMENTAL', # query filtered
                         'replication_keys': ['end_time'],
+                        'use_query_param_for_bookmark': True,
                         'bookmark_query_field_from': 'start_time',
                         'bookmark_query_field_to': 'end_time',
                         'path': 'adaccounts/{parent_id}/stats',
@@ -121,6 +122,7 @@ STREAMS = {
                         'key_properties': ['id', 'start_time'],
                         'replication_method': 'INCREMENTAL', # query filtered
                         'replication_keys': ['end_time'],
+                        'use_query_param_for_bookmark': True,
                         'bookmark_query_field_from': 'start_time',
                         'bookmark_query_field_to': 'end_time',
                         'path': 'adaccounts/{parent_id}/stats',
@@ -231,6 +233,7 @@ STREAMS = {
                                 'key_properties': ['id', 'start_time'],
                                 'replication_method': 'INCREMENTAL', # query filtered
                                 'replication_keys': ['end_time'],
+                                'use_query_param_for_bookmark': True,
                                 'bookmark_query_field_from': 'start_time',
                                 'bookmark_query_field_to': 'end_time',
                                 'path': 'campaigns/{parent_id}/stats',
@@ -255,6 +258,7 @@ STREAMS = {
                                 'key_properties': ['id', 'start_time'],
                                 'replication_method': 'INCREMENTAL', # query filtered
                                 'replication_keys': ['end_time'],
+                                'use_query_param_for_bookmark': True,
                                 'bookmark_query_field_from': 'start_time',
                                 'bookmark_query_field_to': 'end_time',
                                 'path': 'campaigns/{parent_id}/stats',
@@ -293,6 +297,7 @@ STREAMS = {
                                 'key_properties': ['id', 'start_time'],
                                 'replication_method': 'INCREMENTAL', # query filtered
                                 'replication_keys': ['end_time'],
+                                'use_query_param_for_bookmark': True,
                                 'bookmark_query_field_from': 'start_time',
                                 'bookmark_query_field_to': 'end_time',
                                 'path': 'adsquads/{parent_id}/stats',
@@ -317,6 +322,7 @@ STREAMS = {
                                 'key_properties': ['id', 'start_time'],
                                 'replication_method': 'INCREMENTAL', # query filtered
                                 'replication_keys': ['end_time'],
+                                'use_query_param_for_bookmark': True,
                                 'bookmark_query_field_from': 'start_time',
                                 'bookmark_query_field_to': 'end_time',
                                 'path': 'adsquads/{parent_id}/stats',
@@ -355,6 +361,7 @@ STREAMS = {
                                 'key_properties': ['id', 'start_time'],
                                 'replication_method': 'INCREMENTAL', # query filtered
                                 'replication_keys': ['end_time'],
+                                'use_query_param_for_bookmark': True,
                                 'bookmark_query_field_from': 'start_time',
                                 'bookmark_query_field_to': 'end_time',
                                 'path': 'ads/{parent_id}/stats',
@@ -379,6 +386,7 @@ STREAMS = {
                                 'key_properties': ['id', 'start_time'],
                                 'replication_method': 'INCREMENTAL', # query filtered
                                 'replication_keys': ['end_time'],
+                                'use_query_param_for_bookmark': True,
                                 'bookmark_query_field_from': 'start_time',
                                 'bookmark_query_field_to': 'end_time',
                                 'path': 'ads/{parent_id}/stats',

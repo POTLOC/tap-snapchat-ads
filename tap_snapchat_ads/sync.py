@@ -154,6 +154,7 @@ def sync_endpoint(
     bookmark_field = next(iter(endpoint_config.get('replication_keys', [])), None)
     params = endpoint_config.get('params', {})
     paging = endpoint_config.get('paging', False)
+    use_query_param_for_bookmark = endpoint_config.get('use_query_param_for_bookmark', False)
     bookmark_query_field_from = endpoint_config.get('bookmark_query_field_from')
     bookmark_query_field_to = endpoint_config.get('bookmark_query_field_to')
     targeting_group = endpoint_config.get('targeting_group')
@@ -412,14 +413,14 @@ def sync_endpoint(
                         # End for data_record in array
                     # End non-stats stream
 
-                # LOGGER.info('transformed_data = {}'.format(transformed_data)) # COMMENT OUT
-                if not transformed_data or transformed_data is None:
-                    LOGGER.info('No transformed data for data = {}'.format(data))
-                    total_records = 0
-                    break # No transformed_data results
-
                 # Process records and get the max_bookmark_value and record_count
                 if stream_name in sync_streams:
+                    if (
+                        use_query_param_for_bookmark and
+                        next_url is None and
+                        strptime_to_utc(params[bookmark_query_field_to]) > strptime_to_utc(max_bookmark_value)
+                       ):
+                        max_bookmark_value = params[bookmark_query_field_to]
                     max_bookmark_value, record_count = process_records(
                         catalog=catalog,
                         stream_name=stream_name,
@@ -428,8 +429,15 @@ def sync_endpoint(
                         bookmark_field=bookmark_field,
                         max_bookmark_value=max_bookmark_value,
                         last_datetime=last_datetime)
-                    LOGGER.info('Stream {}, batch processed {} records'.format(
-                        stream_name, record_count))
+                    if record_count > 0:
+                        LOGGER.info('Stream {}, batch processed {} records'.format(
+                            stream_name, record_count))
+
+                # LOGGER.info('transformed_data = {}'.format(transformed_data)) # COMMENT OUT
+                if not transformed_data or transformed_data is None:
+                    LOGGER.info('No transformed data for data = {}'.format(data))
+                    total_records = 0
+                    break # No transformed_data results
 
                 # Loop thru parent batch records for each children objects (if should stream)
                 children = endpoint_config.get('children')
